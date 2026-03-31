@@ -1,6 +1,12 @@
 @import url("common.css");
 @import url("animation.css");
 
+html,
+body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+}
+
 html {
   scrollbar-width: none !important;
   -ms-overflow-style: none !important;
@@ -119,4 +125,43 @@ html[data-bs-theme="dark"] .glass-card {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+/* Mengunci posisi Navbar agar rapi di tengah pada HP */
+#navbar-menu {
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 90% !important;
+  max-width: 400px !important; /* Membatasi lebar maksimal di HP */
+  z-index: 9999 !important;
+  margin: 0 !important;
+}
+
+/* Penyesuaian khusus untuk layar Laptop/PC (Desktop) */
+@media (min-width: 576px) {
+  #navbar-menu {
+    /* Batalkan posisi tengah dari HP */
+    left: auto !important;
+    transform: none !important;
+
+    /* Taruh di pojok kanan bawah area putih */
+    right: 4% !important;
+
+    /* Kunci lebarnya agar tidak menabrak background pink */
+    width: 350px !important;
+  }
+}
+
+/* Memperbaiki posisi tombol musik agar tidak tertutup navbar */
+#button-music,
+#button-theme {
+  z-index: 10000 !important;
+  bottom: 100px !important;
+}
+
+/* Memberi jarak aman di paling bawah halaman utama */
+main {
+  padding-bottom: 100px !important;
 }

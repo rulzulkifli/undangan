@@ -96,19 +96,19 @@ export const guest = (() => {
         // Tampilan khusus untuk pelni1 dengan tambahan kalimat di atasnya
         nameDisplay = `
                 <div class="mb-2">
-                    <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Tim Terbaik Sepanjang Masa Takan Pernah Terlupakan</i>
-                    <p class="m-0 p-0 fw-bold" style="font-size: 1.1rem; line-height: 1.6; color: var(--bs-primary);">
+                <p class="m-0 p-0 fw-bold" style="font-size: 1.1rem; line-height: 1.6; color: var(--bs-primary);">
                         ${util.escapeHtml(name)}
                     </p>
+                    <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Tim Terbaik Sepanjang Masa Takan Pernah Terlupakan</i>
                 </div>`;
       } else if (isPelni2) {
         // Tampilan khusus untuk pelni1 dengan tambahan kalimat di atasnya
         nameDisplay = `
                 <div class="mb-2">
-                    <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Divisi Terkeren Sejagad Raya</i>
                     <p class="m-0 p-0 fw-bold" style="font-size: 1.1rem; line-height: 1.6; color: var(--bs-primary);">
                         ${util.escapeHtml(name)}
                     </p>
+                    <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Divisi Terkeren Sejagad Raya</i>
                 </div>`;
       } else {
         // Tampilan default untuk tamu lainnya

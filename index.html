@@ -57,36 +57,26 @@
   >
     <div class="row m-0 p-0 opacity-0" id="root">
       <div
-        class="sticky-top vh-100 d-none d-sm-block col-sm-5 col-md-6 col-lg-7 col-xl-8 col-xxl-9 overflow-y-hidden m-0 p-0"
+        class="position-fixed top-0 start-0 vh-100 d-none d-sm-flex flex-column justify-content-center align-items-center col-sm-5 col-md-6 col-lg-7 col-xl-8 col-xxl-9 m-0 p-0"
+        style="z-index: 0"
       >
         <div
-          class="position-relative d-flex justify-content-center align-items-center vh-100"
+          class="text-center p-5 glass-card"
+          data-aos="zoom-in"
+          data-aos-duration="2000"
         >
-          <div
-            class="position-absolute w-100 h-100"
-            style="
-              background-image: url(&quot;./assets/images/bg4.png&quot;);
-              background-size: cover;
-              background-position: center;
-            "
-          ></div>
-          <div
-            class="text-center p-5 glass-card"
-            data-aos="zoom-in"
-            data-aos-duration="2000"
-          >
-            <h2 class="font-esthetic mb-4" style="font-size: 3.5rem">
-              Rul & Regita
-            </h2>
-            <p class="m-0 fw-bold" style="font-size: 1.2rem; color: #5a4b33">
-              Minggu, 12 April 2026
-            </p>
-          </div>
+          <h2 class="font-esthetic mb-4" style="font-size: 3.5rem">
+            Rul & Regita
+          </h2>
+          <p class="m-0 fw-bold" style="font-size: 1.2rem; color: #5a4b33">
+            Minggu, 12 April 2026
+          </p>
         </div>
       </div>
 
       <div
-        class="col-sm-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 m-0 p-0 shadow-lg"
+        class="col-12 col-sm-7 col-md-6 col-lg-5 col-xl-4 col-xxl-3 ms-auto m-0 p-0 shadow-lg overflow-x-hidden"
+        style="z-index: 1"
       >
         <main
           data-bs-spy="scroll"
@@ -249,33 +239,25 @@
               </h2>
 
               <div
-                id="video-love-stroy"
-                class="position-relative rounded-4 mb-2 pb-0 mt-3"
-                data-src="./assets/video/wedding.mp4"
-                data-vid-class="w-100 rounded-4 shadow-sm m-0 p-0"
+                class="ratio ratio-16x9 mt-3 rounded-4 overflow-hidden shadow-sm"
+                style="border: 2px solid rgba(166, 139, 92, 0.3)"
               >
-                <div
-                  class="position-absolute d-flex flex-column justify-content-center align-items-center top-50 start-50 translate-middle w-100 h-100 bg-overlay-auto rounded-4 z-3"
-                  id="video-love-stroy-loading"
+                <iframe
+                  src="https://www.youtube.com/embed/Uos2ngv6C98?rel=0&modestbranding=1"
+                  title="Prewedding Video"
+                  frameborder="0"
+                  allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                  "
+                  allowfullscreen
                 >
-                  <div
-                    class="progress w-25"
-                    role="progressbar"
-                    style="height: 0.5rem"
-                    aria-label="progress bar"
-                  >
-                    <div
-                      class="progress-bar"
-                      id="progress-bar-video-love-stroy"
-                      style="width: 0%"
-                    ></div>
-                  </div>
-                  <small
-                    class="mt-1 text-theme-auto bg-theme-auto py-0 px-2 rounded-4"
-                    id="progress-info-video-love-stroy"
-                    style="font-size: 0.7rem"
-                  ></small>
-                </div>
+                </iframe>
               </div>
             </div>
           </section>
@@ -298,7 +280,7 @@
                 "
               >
                 <div
-                  class="row justify-content-center fw-bold"
+                  class="row m-0 justify-content-center fw-bold"
                   style="color: #a68b5c"
                 >
                   <div class="col-3 p-0">
@@ -532,9 +514,9 @@
         </main>
 
         <nav
-          class="navbar navbar-expand sticky-bottom p-0 glass-card mx-3 mb-3"
-          style="border-radius: 50px !important"
+          class="navbar navbar-expand p-0 glass-card shadow-lg"
           id="navbar-menu"
+          style="border-radius: 50px !important"
         >
           <ul class="navbar-nav nav-justified w-100 align-items-center">
             <li class="nav-item">
