@@ -80,11 +80,10 @@ export const guest = (() => {
       name =
         "Mas Uji, Mas Ardhy, Mas Anil, Mas Dimas, Mas Jodi, Mas Fauzan, Mas Wahyu, Mas Alma, Mba Nurul, Mas Anam, Mba Ayu, Mas Reza (Tim Developer Divisi TI)";
     }
-
+    let isPelni2 = false;
     if (name === "pelni2") {
-      isPelni = true;
-      name =
-        "Bapak Angga Krisosa selaku VP Divisi TI beserta seluruh Tim Divisi TI";
+      isPelni2 = true;
+      name = "Angga Krisosa selaku VP Divisi TI beserta seluruh Tim Divisi TI";
     }
 
     if (name) {
@@ -98,6 +97,15 @@ export const guest = (() => {
         nameDisplay = `
                 <div class="mb-2">
                     <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Tim Terbaik Sepanjang Masa Takan Pernah Terlupakan</i>
+                    <p class="m-0 p-0 fw-bold" style="font-size: 1.1rem; line-height: 1.6; color: var(--bs-primary);">
+                        ${util.escapeHtml(name)}
+                    </p>
+                </div>`;
+      } else if (isPelni2) {
+        // Tampilan khusus untuk pelni1 dengan tambahan kalimat di atasnya
+        nameDisplay = `
+                <div class="mb-2">
+                    <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Divisi Terkeren Sejagad Raya</i>
                     <p class="m-0 p-0 fw-bold" style="font-size: 1.1rem; line-height: 1.6; color: var(--bs-primary);">
                         ${util.escapeHtml(name)}
                     </p>
@@ -116,10 +124,10 @@ export const guest = (() => {
       guestName?.appendChild(div);
     }
 
-    const form = document.getElementById("form-name");
-    if (form) {
-      form.value = information.get("name") ?? (isPelni ? "Tim Devel" : name);
-    }
+    // const form = document.getElementById("form-name");
+    // if (form) {
+    //   form.value = information.get("name") ?? (isPelni ? "Tim Devel" : name);
+    // }
   };
 
   /**

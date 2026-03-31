@@ -6,35 +6,101 @@ html {
   -ms-overflow-style: none !important;
 }
 
-.with-scrollbar {
-  scrollbar-width: auto !important;
-  -ms-overflow-style: auto !important;
+/* =========================================================
+   1. GLOBAL BACKGROUND (FLORAL SEAMLESS)
+   ========================================================= */
+body {
+  /* Kita gunakan bg4.png (floral) yang sudah Anda punya */
+  background-image: url("../assets/images/bg4.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed !important; /* Membuat background diam saat discroll */
+  background-repeat: no-repeat;
 }
 
+/* Hilangkan background solid di semua section agar background floral terlihat */
+section {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================================
+   2. GLASSMORPHISM (EFEK KACA MODERN)
+   ========================================================= */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.5) !important;
+  box-shadow: 0 8px 32px 0 rgba(166, 139, 92, 0.15) !important;
+  border-radius: 1.5rem;
+}
+
+html[data-bs-theme="dark"] .glass-card {
+  background: rgba(20, 20, 20, 0.6) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* =========================================================
+   3. TYPOGRAPHY & COLORS
+   ========================================================= */
 .font-esthetic {
   font-family: "Great Vibes", cursive !important;
+  color: #a68b5c !important; /* Warna Gold Elegan */
+  text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.5);
 }
 
 .font-arabic {
   font-family: "Noto Naskh Arabic", serif !important;
+  color: #a68b5c !important;
+}
+
+/* =========================================================
+   4. ANIMASI MODERN (FLOATING & GLOWING)
+   ========================================================= */
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 25px rgba(166, 139, 92, 0.3);
+  }
+  50% {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 35px rgba(166, 139, 92, 0.5);
+  }
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 10px 25px rgba(166, 139, 92, 0.3);
+  }
+}
+
+.floating-anim {
+  animation: floating 4s ease-in-out infinite;
 }
 
 .img-center-crop {
-  width: 13rem;
-  height: 13rem;
+  width: 14rem;
+  height: 14rem;
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
+  border: 5px solid #fff !important;
 }
 
-html[data-bs-theme="dark"] .btn-transparent {
-  background-color: rgba(var(--bs-dark-rgb), 0.5) !important;
-  backdrop-filter: blur(0.5rem);
+/* Custom Button */
+.btn-outline-auto {
+  border-color: #a68b5c !important;
+  color: #a68b5c !important;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
 }
 
-html[data-bs-theme="light"] .btn-transparent {
-  background-color: rgba(var(--bs-light-rgb), 0.5) !important;
-  backdrop-filter: blur(0.5rem);
+.btn-outline-auto:hover {
+  background-color: #a68b5c !important;
+  color: #fff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(166, 139, 92, 0.4);
 }
 
 .loading-page {
@@ -45,120 +111,12 @@ html[data-bs-theme="light"] .btn-transparent {
   z-index: 1056;
 }
 
-html[data-bs-theme="light"] .color-theme-svg {
-  color: rgb(255, 255, 255);
-  background-color: var(--bs-light);
-}
-
-html[data-bs-theme="dark"] .color-theme-svg {
-  color: rgb(0, 0, 0);
-  background-color: var(--bs-dark);
-}
-
-html[data-bs-theme="light"] .bg-light-dark {
-  background-color: rgb(var(--bs-light-rgb));
-}
-
-html[data-bs-theme="dark"] .bg-light-dark {
-  background-color: rgb(var(--bs-dark-rgb));
-}
-
-html[data-bs-theme="light"] .bg-white-black {
-  background-color: rgb(var(--bs-white-rgb));
-}
-
-html[data-bs-theme="dark"] .bg-white-black {
-  background-color: rgb(var(--bs-black-rgb));
-}
-
-.bg-cover-home {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  mask-image: linear-gradient(
-    0.5turn,
-    transparent,
-    black 40%,
-    black 60%,
-    transparent
-  );
-}
-
-.width-loading {
-  width: 25%;
-}
-
-.cursor-pointer {
-  cursor: pointer;
-}
-
-@media screen and (max-width: 992px) {
-  .width-loading {
-    width: 50%;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .width-loading {
-    width: 75%;
-  }
-}
-
-svg {
-  display: block;
-  line-height: 0;
-  shape-rendering: geometricPrecision;
-  backface-visibility: hidden;
-}
-
-.svg-wrapper {
-  overflow: hidden !important;
-  transform: translateZ(0) !important;
-}
-
-.no-gap-bottom {
-  margin-bottom: -0.75rem !important;
-}
-
-/* Mempercantik Judul dan Font */
-.font-esthetic {
-  color: #a68b5c !important; /* Warna Gold/Emas kecokelatan */
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-}
-
-/* Memberi bingkai pada gambar profil agar lebih indah */
-.img-center-crop {
-  border: 5px solid #fff !important;
-  box-shadow: 0 10px 25px rgba(166, 139, 92, 0.3) !important;
-}
-
-/* Custom Button agar lebih berwarna */
-.btn-outline-auto {
-  border-color: #a68b5c !important;
-  color: #a68b5c !important;
-}
-
-.btn-outline-auto:hover {
-  background-color: #a68b5c !important;
-  color: #fff !important;
-}
-
-/* Animasi tambahan untuk elemen dekoratif */
-.svg-wrapper svg {
-  fill: #fcf8f2 !important;
-}
 .welcome-bg-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ini yang mencegah gambar terpotong di laptop */
+  object-fit: cover;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-@media (max-width: 576px) {
-  .welcome-bg-image {
-    object-fit: cover; /* Di HP tetap penuh karena layar HP searah dengan foto portrait */
-  }
 }
