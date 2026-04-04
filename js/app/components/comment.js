@@ -133,48 +133,49 @@ export const comment = (() => {
    * @returns {Promise<void>}
    */
   const fetchTracker = async (c) => {
-    if (c.comments) {
-      await Promise.all(c.comments.map((v) => fetchTracker(v)));
-    }
+    return;
+    // if (c.comments) {
+    //   await Promise.all(c.comments.map((v) => fetchTracker(v)));
+    // }
 
-    if (!c.ip || !c.user_agent || c.is_admin) {
-      return;
-    }
+    // if (!c.ip || !c.user_agent || c.is_admin) {
+    //   return;
+    // }
 
-    /**
-     * @param {string} result
-     * @returns {void}
-     */
-    const setResult = (result) => {
-      const commentIp = document.getElementById(
-        `ip-${util.escapeHtml(c.uuid)}`,
-      );
-      util.safeInnerHTML(
-        commentIp,
-        `<i class="fa-solid fa-location-dot me-1"></i>${util.escapeHtml(c.ip)} <strong>${util.escapeHtml(result)}</strong>`,
-      );
-    };
+    // /**
+    //  * @param {string} result
+    //  * @returns {void}
+    //  */
+    // const setResult = (result) => {
+    //   const commentIp = document.getElementById(
+    //     `ip-${util.escapeHtml(c.uuid)}`,
+    //   );
+    //   util.safeInnerHTML(
+    //     commentIp,
+    //     `<i class="fa-solid fa-location-dot me-1"></i>${util.escapeHtml(c.ip)} <strong>${util.escapeHtml(result)}</strong>`,
+    //   );
+    // };
 
-    // Free for commercial and non-commercial use.
-    await request(HTTP_GET, `https://apip.cc/api-json/${c.ip}`)
-      .withCache()
-      .withRetry()
-      .default()
-      .then((res) => res.json())
-      .then((res) => {
-        let result = "localhost";
+    // // Free for commercial and non-commercial use.
+    // await request(HTTP_GET, `https://apip.cc/api-json/${c.ip}`)
+    //   .withCache()
+    //   .withRetry()
+    //   .default()
+    //   .then((res) => res.json())
+    //   .then((res) => {
+    //     let result = "localhost";
 
-        if (res.status === "success") {
-          if (res.City.length !== 0 && res.RegionName.length !== 0) {
-            result = res.City + " - " + res.RegionName;
-          } else if (res.Capital.length !== 0 && res.CountryName.length !== 0) {
-            result = res.Capital + " - " + res.CountryName;
-          }
-        }
+    //     if (res.status === "success") {
+    //       if (res.City.length !== 0 && res.RegionName.length !== 0) {
+    //         result = res.City + " - " + res.RegionName;
+    //       } else if (res.Capital.length !== 0 && res.CountryName.length !== 0) {
+    //         result = res.Capital + " - " + res.CountryName;
+    //       }
+    //     }
 
-        setResult(result);
-      })
-      .catch((err) => setResult(err.message));
+    //     setResult(result);
+    //   })
+    //   .catch((err) => setResult(err.message));
   };
 
   /**
@@ -589,6 +590,7 @@ export const comment = (() => {
           gifId,
         ),
       )
+      .withRetry(3, 1000)
       .send(dto.getCommentResponse);
 
     if (name) {

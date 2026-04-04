@@ -74,60 +74,84 @@ export const guest = (() => {
     }
 
     let isPelni = false;
-
     if (name === "pelni1") {
       isPelni = true;
       name =
-        "Mas Uji, Mas Ardhy, Mas Anil, Mas Dimas, Mas Jodi, Mas Fauzan, Mas Wahyu, Mas Alma, Mba Nurul, Mas Anam, Mba Ayu, Mas Reza (Tim Developer Divisi TI)";
+        "Mas Uji, Mas Ardhy, Mas Anil, Mas Dimas, Mas Jodi, Mas Fauzan, Mas Wahyu, Mas Alma, Mba Nurul, Mas Anam, Mba Ayu, Mas Reza)";
     }
+
     let isPelni2 = false;
     if (name === "pelni2") {
       isPelni2 = true;
-      name = "Angga Krisosa selaku VP Divisi TI beserta seluruh Tim Divisi TI";
+      name = "Angga Krisosa";
     }
 
     if (name) {
       const guestName = document.getElementById("guest-name");
-      const div = document.createElement("div");
-      div.classList.add("m-2");
+
+      // 1. Kontainer utama untuk semua elemen
+      const container = document.createElement("div");
+      container.className = "m-2 text-center";
+
+      // 2. Teks "Kepada Yth..." diletakkan di ATAS, di luar glass
+      const greetingText = document.createElement("small");
+      greetingText.className = "mt-0 mb-2 mx-0 p-0 d-block text-dark fw-medium";
+      greetingText.innerText =
+        guestName?.getAttribute("data-message") ||
+        "Kepada Yth Bapak/Ibu/Saudara/i";
+      container.appendChild(greetingText);
+
+      // 3. Elemen kotak glass hanya untuk NAMA
+      const glassDiv = document.createElement("div");
+      glassDiv.className = "glass-card p-3 shadow-sm mb-2";
 
       let nameDisplay;
       if (isPelni) {
-        // Tampilan khusus untuk pelni1 dengan tambahan kalimat di atasnya
         nameDisplay = `
                 <div class="mb-2">
-                <p class="m-0 p-0 fw-bold" style="font-size: 1.1rem; line-height: 1.6; color: var(--bs-primary);">
+                 <p class="m-0 p-0 fw-bold text-primary" style="font-size: 1.1rem; line-height: 1.4;">
+                        Tim Devel Divisi TI PT PELNI
+                    </p>
+                    <p class="m-0 p-0 fw-bold text-primary" style="font-size: 1.1rem; line-height: 1.6;">
                         ${util.escapeHtml(name)}
                     </p>
                     <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Tim Terbaik Sepanjang Masa Takan Pernah Terlupakan</i>
                 </div>`;
       } else if (isPelni2) {
-        // Tampilan khusus untuk pelni1 dengan tambahan kalimat di atasnya
         nameDisplay = `
                 <div class="mb-2">
-                    <p class="m-0 p-0 fw-bold" style="font-size: 1.1rem; line-height: 1.6; color: var(--bs-primary);">
+                    <p class="m-0 p-0 fw-bold text-primary" style="font-size: 1.1rem; line-height: 1.4;">
+                        Vice President Divisi TI PT PELNI
+                    </p>
+                    <p class="m-0 p-0 fw-bold text-primary" style="font-size: 1.25rem; line-height: 1.4;">
                         ${util.escapeHtml(name)}
+                    </p>
+                    <p class="m-0 p-0 fw-bold text-primary" style="font-size: 1.1rem; line-height: 1.4;">
+                        Beserta Seluruh Jajaran Tim Divisi TI
                     </p>
                     <i class="d-block mb-1 text-secondary" style="font-size: 0.9rem;">Divisi Terkeren Sejagad Raya</i>
                 </div>`;
       } else {
-        // Tampilan default untuk tamu lainnya
-        nameDisplay = `<p class="m-0 p-0" style="font-size: 1.25rem">${util.escapeHtml(name)}</p>`;
+        nameDisplay = `
+                <div class="mb-0">
+                    <p class="m-0 p-0 fw-bold" style="font-size: 1.25rem">${util.escapeHtml(name)}</p>
+                </div>`;
       }
 
-      const template = `
-            <small class="mt-0 mb-1 mx-0 p-0 d-block">${util.escapeHtml(guestName?.getAttribute("data-message"))}</small>
-            ${nameDisplay}
-        `;
+      // Masukkan hanya tampilan nama ke dalam Glass Card
+      util.safeInnerHTML(glassDiv, nameDisplay);
+      container.appendChild(glassDiv);
 
-      util.safeInnerHTML(div, template);
-      guestName?.appendChild(div);
+      // 4. Teks permohonan maaf di bawah glass
+      const apologyText = document.createElement("i");
+      apologyText.className = "d-block mt-2 text-muted";
+      apologyText.style.fontSize = "0.75rem";
+      apologyText.innerText =
+        "Mohon maaf apabila ada kesalahan dalam penulisan nama/gelar";
+      container.appendChild(apologyText);
+
+      guestName?.appendChild(container);
     }
-
-    // const form = document.getElementById("form-name");
-    // if (form) {
-    //   form.value = information.get("name") ?? (isPelni ? "Tim Devel" : name);
-    // }
   };
 
   /**

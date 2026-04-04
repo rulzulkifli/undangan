@@ -28,7 +28,7 @@
     />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa&display=swap"
     />
     <link
       rel="stylesheet"
@@ -46,6 +46,15 @@
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
     ></script>
     <script src="./dist/guest.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
   </head>
 
   <body
@@ -65,6 +74,12 @@
           data-aos="zoom-in"
           data-aos-duration="2000"
         >
+          <img
+            src="./assets/images/icon-192x19sds2.png"
+            alt="Logo R&R"
+            class="floral-animation mb-2"
+            style="width: 140px; drop-shadow(0px 5px 15px rgba(166, 139, 92, 0.4));"
+          />
           <h2 class="font-esthetic mb-4" style="font-size: 3.5rem">
             Rul & Regita
           </h2>
@@ -147,7 +162,14 @@
               data-aos="zoom-in-up"
               data-aos-duration="1500"
             >
-              <h2 class="font-arabic py-2 m-0" style="font-size: 1.6rem">
+              <h2
+                class="font-arabic py-2 m-0"
+                style="
+                  font-family: &quot;Amiri&quot;, serif;
+                  font-size: 1.8rem;
+                  line-height: 2;
+                "
+              >
                 بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ
               </h2>
               <h2 class="font-esthetic py-2 m-0" style="font-size: 1.6rem">
@@ -262,6 +284,62 @@
             </div>
           </section>
 
+          <section class="p-3" id="gallery">
+            <div
+              class="glass-card p-4 text-center w-100"
+              data-aos="fade-up"
+              data-aos-duration="1500"
+            >
+              <h2 class="font-esthetic py-2 mb-2" style="font-size: 2.125rem">
+                Galeri Foto
+              </h2>
+
+              <div
+                id="weddingGallery"
+                class="carousel slide mt-3 rounded-4 overflow-hidden shadow-sm"
+                data-bs-ride="carousel"
+                style="border: 2px solid rgba(166, 139, 92, 0.3)"
+              >
+                <div
+                  class="carousel-indicators mb-2"
+                  id="gallery-indicators"
+                ></div>
+
+                <div class="carousel-inner" id="gallery-inner"></div>
+
+                <button
+                  class="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#weddingGallery"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    class="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                  class="carousel-control-next"
+                  type="button"
+                  data-bs-target="#weddingGallery"
+                  data-bs-slide="next"
+                >
+                  <span
+                    class="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+
+              <p class="mt-3 mb-0 text-muted" style="font-size: 0.85rem">
+                <i class="fa-solid fa-hand-pointer me-1"></i> Klik foto untuk
+                memperbesar
+              </p>
+            </div>
+          </section>
+
           <section class="p-3" id="wedding-date">
             <div
               class="glass-card p-4 text-center w-100"
@@ -348,6 +426,36 @@
                 >
                   <i class="fa-solid fa-map-location-dot me-1"></i>Lokasi
                   Resepsi
+                </a>
+              </div>
+
+              <hr class="my-3" style="border-color: #a68b5c; opacity: 0.3" />
+
+              <div data-aos="fade-up" data-aos-duration="1500" class="mb-4">
+                <h2 class="font-esthetic m-0" style="font-size: 2rem">
+                  Mengantar Mempelai Pria
+                </h2>
+                <p class="mb-2 mt-2 text-muted" style="font-size: 0.9rem">
+                  Bagi Bapak/Ibu/Saudara/i yang berkenan, kami dengan senang
+                  hati mengundang untuk berkumpul dan bersama-sama mengantarkan
+                  mempelai pria menuju lokasi akad nikah.
+                </p>
+                <p
+                  class="mb-1 fw-semibold text-muted"
+                  style="font-size: 0.9rem"
+                >
+                  Pukul 08.30 WITA - Berangkat
+                </p>
+                <small class="d-block px-3 mb-2 text-muted">
+                  Kediaman Mempelai Pria<br />
+                  Jl. [Tulis Nama Jalan / Alamat Lengkap Mempelai Pria], Kolaka.
+                </small>
+                <a
+                  href="https://maps.app.goo.gl/CONTOHLINKMAPSANDA"
+                  target="_blank"
+                  class="btn btn-outline-auto btn-sm rounded-pill px-4 py-1"
+                >
+                  <i class="fa-solid fa-map-location-dot me-1"></i>Lokasi Kumpul
                 </a>
               </div>
             </div>
@@ -480,6 +588,14 @@
               </button>
             </div>
 
+            <small
+              class="text-muted d-block text-center mb-3"
+              style="font-size: 0.8rem; font-style: italic"
+            >
+              <i class="fa-solid fa-heart text-danger me-1"></i> Tip: Ketuk dua
+              kali (double tap) pada pesan untuk menyukainya.
+            </small>
+
             <div
               id="comments"
               data-loading="false"
@@ -489,6 +605,61 @@
               class="d-flex d-none justify-content-center mt-3"
               id="pagination"
             ></nav>
+          </section>
+
+          <section class="px-3 pb-3 text-center">
+            <div data-aos="fade-up" data-aos-duration="1000">
+              <small
+                class="text-muted d-block mb-2"
+                style="font-size: 0.85rem; font-style: italic"
+              >
+                Bagi Bapak/Ibu/Saudara/i yang berkenan mengantar mempelai pria,
+                <a
+                  data-bs-toggle="collapse"
+                  href="#collapseLokasiKumpul"
+                  role="button"
+                  aria-expanded="false"
+                  aria-controls="collapseLokasiKumpul"
+                  class="text-decoration-none fw-bold"
+                  style="color: #a68b5c"
+                >
+                  silakan klik di sini </a
+                >.
+              </small>
+
+              <div class="collapse mt-3" id="collapseLokasiKumpul">
+                <div
+                  class="card card-body glass-card border-0 text-center mx-auto shadow-sm"
+                  style="max-width: 400px; background: rgba(255, 255, 255, 0.5)"
+                >
+                  <p
+                    class="m-0 fw-bold font-esthetic"
+                    style="color: #a68b5c; font-size: 1.5rem"
+                  >
+                    Titik Kumpul
+                  </p>
+                  <p
+                    class="mb-1 mt-1 fw-semibold text-muted"
+                    style="font-size: 0.9rem"
+                  >
+                    Pukul 08.30 WITA - Berangkat
+                  </p>
+                  <small class="d-block mb-3 text-muted">
+                    Jl. Pondui, Laloeha, Kec. Kolaka, Kabupaten Kolaka, Sulawesi
+                    Tenggara.
+                  </small>
+                  <a
+                    href="https://maps.app.goo.gl/ZPxMAJ1y8LQLioCx9"
+                    target="_blank"
+                    class="btn btn-outline-auto btn-sm rounded-pill px-4 py-1 mx-auto"
+                    style="width: fit-content"
+                  >
+                    <i class="fa-solid fa-map-location-dot me-1"></i>Buka Peta
+                    Lokasi
+                  </a>
+                </div>
+              </div>
+            </div>
           </section>
 
           <section class="p-3 d-flex align-items-center text-center">
@@ -504,9 +675,60 @@
               <h2 class="font-esthetic mt-4" style="font-size: 2rem">
                 Wassalamualaikum Warahmatullahi Wabarakatuh
               </h2>
-              <h2 class="font-arabic mt-3" style="font-size: 1.5rem">
+              <h2
+                class="font-arabic mt-3"
+                style="
+                  font-family: &quot;Amiri&quot;, serif;
+                  font-size: 1.6rem;
+                  line-height: 2;
+                "
+              >
                 اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَۙ
               </h2>
+            </div>
+          </section>
+
+          <section
+            class="pb-4 pt-2 d-flex justify-content-center align-items-center"
+            data-aos="fade-up"
+            data-aos-duration="1500"
+          >
+            <div
+              class="px-4 py-2 text-center glass-card"
+              style="
+                border-radius: 50px;
+                width: fit-content;
+                padding-left: 2rem !important;
+                padding-right: 2rem !important;
+              "
+            >
+              <small
+                class="text-muted d-block mb-1 fw-bold"
+                style="
+                  font-size: 0.65rem;
+                  letter-spacing: 1px;
+                  text-transform: uppercase;
+                "
+              >
+                Powered By
+              </small>
+
+              <a href="#" target="_blank" class="text-decoration-none">
+                <img
+                  src="./assets/images/ichiro.png"
+                  alt="Ichiro Studio"
+                  style="
+                    height: 20px;
+                    object-fit: contain;
+                    /* filter: invert(1); */
+                    mix-blend-mode: multiply;
+                    opacity: 0.7;
+                    transition: all 0.3s ease;
+                  "
+                  onmouseover="this.style.opacity = '1'"
+                  onmouseout="this.style.opacity = '0.7'"
+                />
+              </a>
             </div>
           </section>
 
@@ -535,6 +757,11 @@
               ></a>
             </li>
             <li class="nav-item">
+              <a class="nav-link py-3" href="#gallery"
+                ><i class="fa-solid fa-images"></i
+              ></a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link py-3" href="#comment"
                 ><i class="fa-solid fa-comments"></i
               ></a>
@@ -544,9 +771,13 @@
       </div>
     </div>
 
-    <div class="loading-page bg-white" id="welcome" style="opacity: 0">
+    <div
+      class="loading-page bg-white"
+      id="welcome"
+      style="opacity: 0; overflow-y: auto; overflow-x: hidden"
+    >
       <div
-        class="position-absolute w-100 h-100"
+        class="position-fixed w-100 h-100"
         style="
           background-image: url(&quot;./assets/images/bg4.png&quot;);
           background-size: cover;
@@ -554,43 +785,68 @@
         "
       ></div>
       <div
-        class="position-absolute top-0 start-0 w-100 h-100"
+        class="position-fixed top-0 start-0 w-100 h-100"
         style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(8px)"
       ></div>
 
       <div
-        class="d-flex justify-content-center align-items-center vh-100 position-relative z-1 text-center p-4"
+        class="d-flex justify-content-center align-items-center min-vh-100 position-relative z-1 text-center p-3 p-md-4"
       >
-        <div class="glass-card p-5" data-aos="fade-up" data-aos-duration="1500">
+        <div
+          class="glass-card p-4 p-md-5 my-4"
+          data-aos="fade-up"
+          data-aos-duration="1500"
+          style="
+            background:
+              linear-gradient(
+                rgba(255, 255, 255, 0.75),
+                rgba(255, 255, 255, 0.75)
+              ),
+              url(&quot;./assets/images/bg.webp&quot;) !important;
+            background-size: cover !important;
+            background-position: center !important;
+          "
+        >
           <h2
-            class="font-esthetic mb-4"
-            style="font-size: 1.8rem; color: #8d754e; letter-spacing: 2px"
+            class="font-esthetic mb-3 fw-bold"
+            style="
+              font-size: 2rem;
+              letter-spacing: 2px;
+              -webkit-text-stroke: 0.5px #a68b5c;
+            "
           >
             The Wedding Of
           </h2>
+
           <img
             src="./assets/images/placeholder.webp"
             data-src="./assets/images/dd-front.jpeg"
             alt="mempelai"
-            class="img-center-crop rounded-circle shadow-lg mb-4 floating-anim"
+            class="img-center-crop rounded-circle shadow-lg mb-3 floating-anim"
           />
-          <h2 class="font-esthetic mb-3" style="font-size: 3.5rem">
+
+          <h2
+            class="font-esthetic mb-3 fw-bold"
+            style="font-size: 3.5rem; -webkit-text-stroke: 1px #a68b5c"
+          >
             Rul & Regita
           </h2>
 
           <div
             id="guest-name"
-            class="text-dark mb-4 fw-medium"
+            class="text-dark mb-4 fw-bold"
             data-message="Kepada Yth Bapak/Ibu/Saudara/i"
           ></div>
 
-          <button
-            type="button"
-            class="btn btn-outline-auto rounded-pill px-5 py-2 fw-bold"
-            onclick="undangan.guest.open(this)"
-          >
-            <i class="fa-solid fa-envelope-open-text me-2"></i>Buka Undangan
-          </button>
+          <div class="mt-2 mb-2">
+            <button
+              type="button"
+              class="btn btn-outline-auto bg-white rounded-pill px-5 py-2 fw-bold shadow"
+              onclick="undangan.guest.open(this)"
+            >
+              <i class="fa-solid fa-envelope-open-text me-2"></i>Buka Undangan
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -693,4 +949,50 @@
       </div>
     </div>
   </body>
+  <script>
+    // Event "undangan.open" ini bawaan template, akan menyala saat tombol Buka Undangan diklik
+    document.addEventListener("undangan.open", () => {
+      const galleryInner = document.getElementById("gallery-inner");
+      const galleryIndicators = document.getElementById("gallery-indicators");
+
+      // Masukkan URL foto-foto Anda di sini
+      const photos = [
+        "./assets/images/prawed/1.jpg",
+        "./assets/images/prawed/2.jpg",
+        "./assets/images/prawed/3.jpg",
+        "./assets/images/prawed/4.jpg",
+        "./assets/images/prawed/5.jpg",
+      ];
+
+      let innerHTML = "";
+      let indicatorsHTML = "";
+
+      photos.forEach((src, index) => {
+        const isActive = index === 0 ? "active" : "";
+
+        // Generate Indikator
+        indicatorsHTML += `<button type="button" data-bs-target="#weddingGallery" data-bs-slide-to="${index}" class="${isActive}" aria-label="Slide ${index + 1}"></button>`;
+
+        // Generate Gambar langsung dengan atribut 'src' (bukan data-src) dan lazy loading
+        innerHTML += `
+                  <div class="carousel-item ${isActive}">
+                    <div class="ratio ratio-16x9">
+                      <img 
+                        src="${src}" 
+                        class="d-block w-100 h-100 object-fit-cover cursor-pointer" 
+                        loading="lazy"
+                        alt="Gallery ${index + 1}" 
+                        onclick="undangan.guest.modal(this)" 
+                        style="cursor: pointer;"
+                      >
+                    </div>
+                  </div>
+                `;
+      });
+
+      // Tampilkan ke layar
+      galleryIndicators.innerHTML = indicatorsHTML;
+      galleryInner.innerHTML = innerHTML;
+    });
+  </script>
 </html>

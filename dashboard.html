@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
     <!-- Common -->
@@ -250,6 +250,53 @@
                 </div>
               </div>
 
+              <div class="bg-theme-auto p-3 mb-4 rounded-4 shadow">
+                <h6 class="fw-bold mb-3" style="color: var(--bs-gray-900)">
+                  <i class="fa-solid fa-link text-primary me-2"></i>Generate
+                  Link & Share WA
+                </h6>
+                <div class="row g-2 align-items-center">
+                  <div class="col-md-5">
+                    <input
+                      type="text"
+                      class="form-control form-control-sm rounded-4 shadow-sm"
+                      id="input-guest-name"
+                      placeholder="Ketik Nama Tamu (Misal: Budi & Pasangan)"
+                      oninput="generateGuestLink()"
+                    />
+                  </div>
+                  <div class="col-md-7">
+                    <div class="input-group input-group-sm">
+                      <input
+                        type="text"
+                        class="form-control form-control-sm rounded-start-4 shadow-sm"
+                        id="output-guest-link"
+                        placeholder="Link otomatis muncul di sini..."
+                        readonly
+                      />
+                      <button
+                        class="btn btn-sm btn-outline-secondary shadow-sm"
+                        type="button"
+                        id="btn-copy-link"
+                        data-copy=""
+                        onclick="undangan.util.copy(this)"
+                        title="Salin Link"
+                      >
+                        <i class="fa-solid fa-copy"></i>
+                      </button>
+                      <button
+                        class="btn btn-sm btn-success rounded-end-4 shadow-sm fw-bold"
+                        type="button"
+                        onclick="shareToWA()"
+                        title="Kirim ke WhatsApp"
+                      >
+                        <i class="fa-brands fa-whatsapp me-1"></i> WA
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
               <!-- Stats -->
               <div class="row">
                 <div class="col col-xl-3 col-6 mb-3">
@@ -399,7 +446,11 @@
                       <div class="position-relative">
                         <button
                           class="btn btn-secondary btn-sm rounded-4 shadow-sm me-1 my-1 position-absolute bottom-0 end-0"
-                          onclick="undangan.comment.gif.open(undangan.comment.gif.default)"
+                          onclick="
+                            undangan.comment.gif.open(
+                              undangan.comment.gif.default,
+                            )
+                          "
                           aria-label="button gif"
                           data-offline-disabled="false"
                         >
@@ -602,7 +653,9 @@
                   <button
                     class="btn btn-sm btn-outline-secondary rounded-end-4 shadow-sm"
                     type="button"
-                    onclick="document.getElementById('dashboard-tenorkey').value = null"
+                    onclick="
+                      document.getElementById('dashboard-tenorkey').value = null
+                    "
                   >
                     <i class="fa-solid fa-trash-can"></i>
                   </button>
@@ -633,7 +686,9 @@
                     type="checkbox"
                     role="switch"
                     id="filterBadWord"
-                    onchange="undangan.admin.changeCheckboxValue(this, 'filter')"
+                    onchange="
+                      undangan.admin.changeCheckboxValue(this, 'filter')
+                    "
                     data-offline-disabled="false"
                   />
                   <label
@@ -650,7 +705,12 @@
                     type="checkbox"
                     role="switch"
                     id="confettiAnimation"
-                    onchange="undangan.admin.changeCheckboxValue(this, 'confetti_animation')"
+                    onchange="
+                      undangan.admin.changeCheckboxValue(
+                        this,
+                        'confetti_animation',
+                      )
+                    "
                     data-offline-disabled="false"
                   />
                   <label
@@ -667,7 +727,9 @@
                     type="checkbox"
                     role="switch"
                     id="replyComment"
-                    onchange="undangan.admin.changeCheckboxValue(this, 'can_reply')"
+                    onchange="
+                      undangan.admin.changeCheckboxValue(this, 'can_reply')
+                    "
                     data-offline-disabled="false"
                   />
                   <label
@@ -684,7 +746,9 @@
                     type="checkbox"
                     role="switch"
                     id="editComment"
-                    onchange="undangan.admin.changeCheckboxValue(this, 'can_edit')"
+                    onchange="
+                      undangan.admin.changeCheckboxValue(this, 'can_edit')
+                    "
                     data-offline-disabled="false"
                   />
                   <label
@@ -701,7 +765,9 @@
                     type="checkbox"
                     role="switch"
                     id="deleteComment"
-                    onchange="undangan.admin.changeCheckboxValue(this, 'can_delete')"
+                    onchange="
+                      undangan.admin.changeCheckboxValue(this, 'can_delete')
+                    "
                     data-offline-disabled="false"
                   />
                   <label
@@ -863,5 +929,72 @@
         </div>
       </div>
     </div>
+    <script>
+      function generateGuestLink() {
+        const nameInput = document.getElementById("input-guest-name").value;
+        const outputLink = document.getElementById("output-guest-link");
+        const copyBtn = document.getElementById("btn-copy-link");
+
+        // Jika input kosong, bersihkan link
+        if (nameInput.trim() === "") {
+          outputLink.value = "";
+          copyBtn.setAttribute("data-copy", "");
+          return;
+        }
+
+        // Mengambil base URL saat ini (Otomatis menyesuaikan domain Anda nantinya)
+        let baseUrl =
+          window.location.origin +
+          window.location.pathname.replace("dashboard.html", "");
+
+        // Buat link dengan parameter ?to= untuk nama tamu
+        const finalLink =
+          baseUrl + "?to=" + encodeURIComponent(nameInput.trim());
+
+        // Tampilkan hasil dan set tombol copy
+        outputLink.value = finalLink;
+        copyBtn.setAttribute("data-copy", finalLink);
+      }
+
+      function shareToWA() {
+        const nameInput = document
+          .getElementById("input-guest-name")
+          .value.trim();
+        const outputLink = document.getElementById("output-guest-link").value;
+
+        if (outputLink === "") {
+          alert("Silakan ketik nama tamu terlebih dahulu!");
+          return;
+        }
+
+        // Format Kata-kata Pesan WhatsApp (Bisa Anda Edit Sesuka Hati)
+        const waText = `Kepada Yth. Bapak/Ibu/Saudara/i:
+        *${nameInput}*
+        Assalamu'alaikum Warahmatullahi Wabarakatuh
+
+        Dengan 
+
+Dengan segala kerendahan hati, kami mengundang Bapak/Ibu/Saudara/i untuk hadir dalam acara pernikahan kami.
+
+Berikut link undangan kami:
+${outputLink}
+*${nameInput.trim()}*
+_(Mohon maaf apabila terdapat kesalahan dalam penulisan nama maupun gelar)_
+
+Besar harapan kami agar Bapak/Ibu/Saudara/i dapat hadir dan memberikan doa restu.
+
+Terima kasih atas perhatian dan kehadirannya.
+
+Wassalamu’alaikum Warahmatullahi Wabarakatuh.
+
+~ Rul & Regita`;
+
+        // Membuka tab baru yang langsung mengarah ke WhatsApp
+        window.open(
+          `https://wa.me/?text=${encodeURIComponent(waText)}`,
+          "_blank",
+        );
+      }
+    </script>
   </body>
 </html>
