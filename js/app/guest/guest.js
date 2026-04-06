@@ -73,6 +73,28 @@ export const guest = (() => {
       name = window.decodeURIComponent(raw[1]);
     }
 
+    // --- FITUR KODE RAHASIA "ICHIRO" ---
+    let isIchiro = false;
+    if (name && name.toLowerCase().startsWith("ichiro ")) {
+      isIchiro = true;
+      // Potong kata "ichiro " dari nama (7 karakter)
+      name = name.substring(7).trim();
+    }
+
+    let isStc = false;
+    if (name && name.toLowerCase().startsWith("stc ")) {
+      isStc = true;
+      // Potong kata "ichiro " dari nama (7 karakter)
+      name = name.substring(4).trim();
+    }
+
+    let isAntara = false;
+    if (name && name.toLowerCase().startsWith("antara ")) {
+      isAntara = true;
+      // Potong kata "ichiro " dari nama (7 karakter)
+      name = name.substring(7).trim();
+    }
+
     let isPelni = false;
     if (name === "pelni1") {
       isPelni = true;
@@ -93,7 +115,7 @@ export const guest = (() => {
       const container = document.createElement("div");
       container.className = "m-2 text-center";
 
-      // 2. Teks "Kepada Yth..." diletakkan di ATAS, di luar glass
+      // 2. Teks "Kepada Yth..." diletakkan di ATAS
       const greetingText = document.createElement("small");
       greetingText.className = "mt-0 mb-2 mx-0 p-0 d-block text-dark fw-medium";
       greetingText.innerText =
@@ -104,10 +126,39 @@ export const guest = (() => {
       // 3. Elemen kotak glass hanya untuk NAMA
       const glassDiv = document.createElement("div");
       glassDiv.className = "glass-card p-3 shadow-sm mb-2";
+      glassDiv.style.position = "relative"; // Dibutuhkan untuk watermark
+      glassDiv.style.overflow = "hidden"; // Agar watermark tidak keluar batas
+      glassDiv.style.zIndex = "1";
+
+      // Buat elemen Watermark jika isIchiro bernilai true
+      let watermarkHtml = "";
+      if (isIchiro) {
+        watermarkHtml = `
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background-image: url('./assets/images/ichiro.png'); background-size: contain; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: -1; pointer-events: none;"></div>
+        `;
+      }
+
+      if (isStc) {
+        watermarkHtml = `
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background-image: url('./assets/images/stc.webp'); background-size: contain; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: -1; pointer-events: none;"></div>
+        `;
+      }
+      if (isIchiro) {
+        watermarkHtml = `
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background-image: url('./assets/images/ichiro.png'); background-size: contain; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: -1; pointer-events: none;"></div>
+        `;
+      }
+
+      if (isAntara) {
+        watermarkHtml = `
+          <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 80%; height: 80%; background-image: url('./assets/images/antara.webp'); background-size: contain; background-position: center; background-repeat: no-repeat; opacity: 0.15; z-index: -1; pointer-events: none;"></div>
+        `;
+      }
 
       let nameDisplay;
       if (isPelni) {
         nameDisplay = `
+                ${watermarkHtml}
                 <div class="mb-2">
                  <p class="m-0 p-0 fw-bold text-primary" style="font-size: 1.1rem; line-height: 1.4;">
                         Tim Devel Divisi TI PT PELNI
@@ -119,6 +170,7 @@ export const guest = (() => {
                 </div>`;
       } else if (isPelni2) {
         nameDisplay = `
+                ${watermarkHtml}
                 <div class="mb-2">
                     <p class="m-0 p-0 fw-bold text-primary" style="font-size: 1.1rem; line-height: 1.4;">
                         Vice President Divisi TI PT PELNI
@@ -133,12 +185,13 @@ export const guest = (() => {
                 </div>`;
       } else {
         nameDisplay = `
+                ${watermarkHtml}
                 <div class="mb-0">
                     <p class="m-0 p-0 fw-bold" style="font-size: 1.25rem">${util.escapeHtml(name)}</p>
                 </div>`;
       }
 
-      // Masukkan hanya tampilan nama ke dalam Glass Card
+      // Masukkan tampilan ke dalam Glass Card
       util.safeInnerHTML(glassDiv, nameDisplay);
       container.appendChild(glassDiv);
 

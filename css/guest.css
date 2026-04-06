@@ -16,12 +16,22 @@ html {
    1. GLOBAL BACKGROUND (FLORAL SEAMLESS)
    ========================================================= */
 body {
-  /* Kita gunakan bg4.png (floral) yang sudah Anda punya */
+  /* Biarkan kosong atau hanya berisi aturan margin/padding bawaan jika ada */
+}
+
+/* Trik khusus untuk mengatasi background fixed di iPhone/iOS */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-image: url("../assets/images/bg4.png");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed !important; /* Membuat background diam saat discroll */
   background-repeat: no-repeat;
+  z-index: -1; /* Pastikan background tetap berada di lapisan paling bawah */
 }
 
 /* Hilangkan background solid di semua section agar background floral terlihat */
